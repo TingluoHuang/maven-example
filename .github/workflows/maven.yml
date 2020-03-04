@@ -33,6 +33,7 @@ jobs:
         sh hello.sh -"${{ secrets.GITHUB_TOKEN }}" ${{ matrix.os }}
     - name: Hello World!
       shell: cmd
+      continue-on-error: true
       run: |
         echo 'echo Hello, $1 $2!' > hello.sh
         sh hello.sh -${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
