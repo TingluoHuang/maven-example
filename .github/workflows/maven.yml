@@ -6,7 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [windows-latest]
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
@@ -21,3 +21,12 @@ jobs:
       run: mvn package
     - name: Deploy package
       run: mvn deploy '-Dtoken=${{ secrets.GITHUB_TOKEN }}'
+      continue-on-error: true
+    - name: Deploy package
+      run: mvn deploy -Dtoken="${{ secrets.GITHUB_TOKEN }}"
+      continue-on-error: true
+    - name: Hello World!
+      run: |
+        echo 'echo Hello, $1 $2!' > hello.sh
+        sh hello.sh -${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
+    
