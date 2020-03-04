@@ -35,15 +35,24 @@ jobs:
       shell: cmd
       continue-on-error: true
       run: |
-        echo 'echo Hello, $1 $2!' > hello.sh
-        sh hello.sh -${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
-        sh hello.sh ${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
-        sh hello.sh -"${{ secrets.GITHUB_TOKEN }}" ${{ matrix.os }}
+        echo 'echo Hello, $1 $2!' > hello2.sh
+        sh hello2.sh -${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
+        sh hello2.sh ${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
+        sh hello2.sh -"${{ secrets.GITHUB_TOKEN }}" ${{ matrix.os }}
     - name: Hello World!
       shell: powershell
+      continue-on-error: true
       run: |
-        echo 'echo Hello, $1 $2!' > hello.sh
-        sh hello.sh -${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
-        sh hello.sh ${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
-        sh hello.sh -"${{ secrets.GITHUB_TOKEN }}" ${{ matrix.os }}
+        echo 'echo Hello, $1 $2!' > hello3.sh
+        sh hello3.sh -${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
+        sh hello3.sh ${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
+        sh hello3.sh -"${{ secrets.GITHUB_TOKEN }}" ${{ matrix.os }}
+    - name: Hello World!
+      shell: sh
+      continue-on-error: true
+      run: |
+        echo 'echo Hello, $1 $2!' > hello4.sh
+        sh hello4.sh -${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
+        sh hello4.sh ${{ secrets.GITHUB_TOKEN }} ${{ matrix.os }}
+        sh hello4.sh -"${{ secrets.GITHUB_TOKEN }}" ${{ matrix.os }}      
     
